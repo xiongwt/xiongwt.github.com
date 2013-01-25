@@ -76,6 +76,7 @@ system-config-kickstart          #生成ks.cfg文件,生成后指定存放位置
 在/tftpboot/pxelinux.cfg/default 已经指定了ks.cfg的存放位置  
 vim  /kickstart/ks.cfg  
 
+
     #platform=x86, AMD64, or Intel EM64T
     # System authorization information
     auth  --useshadow  --enablemd5
@@ -142,9 +143,9 @@ vim  /kickstart/ks.cfg
     @editors
     @java
     @games
-    
     %post
     ###系统安装后执行的shell脚本#######
+    
 ###3.设置无人值守安装界面
 vim /tftpboot/boot.msg   #如果无此文件，可以从/mnt/isolinux 中复制过来
 
@@ -169,3 +170,4 @@ vim /tftpboot/boot.msg   #如果无此文件，可以从/mnt/isolinux 中复制�
              8. Linux RHEL5U4_64 install (install nagios client and LAMP)
 
     
+
