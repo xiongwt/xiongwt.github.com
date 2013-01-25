@@ -76,75 +76,72 @@ system-config-kickstart          #生成ks.cfg文件,生成后指定存放位置
 在/tftpboot/pxelinux.cfg/default 已经指定了ks.cfg的存放位置  
 vim  /kickstart/ks.cfg  
 
-
-    #platform=x86, AMD64, or Intel EM64T
-    # System authorization information
-    auth  --useshadow  --enablemd5
-    # System bootloader configuration
-    bootloader --location=mbr
-    # Clear the Master Boot Record
-    zerombr
-    # Partition clearing information
-    clearpart --all --initlabel
-    key --skip
-    # Use text mode install
-    text
-    # Firewall configuration
-    firewall --disabled
-    # Run the Setup Agent on first boot
-    firstboot --disable
-    # System keyboard
-    keyboard us
-    # System language
-    lang en_US.UTF-8
-    # Installation logging level
-    logging --level=info
-    # Use NFS installation media
-    nfs --server=192.168.200.201 --dir=/opt/software/Kickstart/RHEL5U4_64
-    # Network information
-    #network --bootproto=dhcp --device=eth0 --onboot=on --hostname
-    network --bootproto=dhcp --device=eth0 --onboot=on
-    # Reboot after installation
-    reboot
-    #Root password
-    rootpw --iscrypted $1$hDrpHFPO$nvQciiqJet3zaZncrOIFx.  ###root密码设置为“rhelroot”
-    
-    # SELinux configuration
-    selinux --disabled
-    # System timezone
-    timezone --isUtc Asia/Shanghai
-    # Install OS instead of upgrade
-    install
-    # X Window System configuration information
-    xconfig  --defaultdesktop=GNOME --depth=32 --resolution=800x600 --startxonboot
-    # Disk partitioning information
-    part /boot --bytes-per-inode=4096 --fstype="ext3" --size=100
-    part swap --bytes-per-inode=4096 --fstype="swap" --size=4096
-    part / --asprimary --bytes-per-inode=4096 --fstype="ext3" --grow --size=1
-    
-    %packages
-    @base
-    @gnome-desktop
-    @development-libs
-    @admin-tools
-    @sound-and-video
-    @chinese-support
-    @gnome-software-development
-    @development-tools
-    @x-software-development
-    @office
-    @legacy-software-support
-    @printing
-    @base-x
-    @text-internet
-    @dialup
-    @graphics
-    @graphical-internet
-    @editors
-    @java
-    @games
-    %post
-    ###系统安装后执行的shell脚本#######
+    #platform=x86, AMD64, or Intel EM64T  
+    # System authorization information  
+    auth  --useshadow  --enablemd5  
+    # System bootloader configuration  
+    bootloader --location=mbr  
+    # Clear the Master Boot Record  
+    zerombr  
+    # Partition clearing information  
+    clearpart --all --initlabel  
+    key --skip  
+    # Use text mode install  
+    text  
+    # Firewall configuration  
+    firewall --disabled  
+    # Run the Setup Agent on first boot  
+    firstboot --disable  
+    # System keyboard  
+    keyboard us  
+    # System language  
+    lang en_US.UTF-8  
+    # Installation logging level  
+    logging --level=info  
+    # Use NFS installation media  
+    nfs --server=192.168.200.201 --dir=/opt/software/Kickstart/RHEL5U4_64  
+    # Network information  
+    #network --bootproto=dhcp --device=eth0 --onboot=on --hostname  
+    network --bootproto=dhcp --device=eth0 --onboot=on  
+    # Reboot after installation  
+    reboot  
+    #Root password  
+    rootpw --iscrypted $1$hDrpHFPO$nvQciiqJet3zaZncrOIFx.  ###root密码设置为“rhelroot”      
+    # SELinux configuration  
+    selinux --disabled  
+    # System timezone  
+    timezone --isUtc Asia/Shanghai  
+    # Install OS instead of upgrade  
+    install  
+    # X Window System configuration information  
+    xconfig  --defaultdesktop=GNOME --depth=32 --resolution=800x600 --startxonboot  
+    # Disk partitioning information  
+    part /boot --bytes-per-inode=4096 --fstype="ext3" --size=100  
+    part swap --bytes-per-inode=4096 --fstype="swap" --size=4096  
+    part / --asprimary --bytes-per-inode=4096 --fstype="ext3" --grow --size=1      
+    %packages  
+    @base  
+    @gnome-desktop  
+    @development-libs  
+    @admin-tools  
+    @sound-and-video  
+    @chinese-support  
+    @gnome-software-development  
+    @development-tools  
+    @x-software-development  
+    @office  
+    @legacy-software-support  
+    @printing  
+    @base-x  
+    @text-internet  
+    @dialup  
+    @graphics  
+    @graphical-internet  
+    @editors  
+    @java  
+    @games  
+    %post  
+    ###系统安装后执行的shell脚本#######  
     
 ###3.设置无人值守安装界面
 vim /tftpboot/boot.msg   #如果无此文件，可以从/mnt/isolinux 中复制过来
